@@ -1,0 +1,126 @@
+Research and Theory – LAN Chat System
+1. Project Overview
+
+Title: LAN Chat System in C++ using TCP/IP Sockets
+Course: HS 2nd Year Computer Science Project
+Institution: Gurucharan University
+Language: C++ (WinSock2 API)
+
+The project implements a local chat system where multiple users in the same network can exchange text messages in real time. It follows a client–server architecture using the TCP/IP protocol for reliable data communication.
+
+2. Networking Fundamentals
+TCP/IP Model
+
+Our system is based on the TCP/IP stack:
+
+Application Layer: Chat logic and message formatting
+
+Transport Layer: TCP ensures reliability and correct order
+
+Network Layer: IP handles addressing and routing
+
+Data Link & Physical Layers: Handle local LAN transmission
+
+Why TCP (not UDP)?
+
+TCP guarantees:
+
+Reliable message delivery
+
+Ordered packet sequence
+
+Error detection and retransmission
+UDP is faster but unreliable — not suitable for messaging.
+
+3. Socket Programming Basics
+
+A socket is an endpoint for communication.
+Server and client communicate using these system calls:
+
+Step	Function	Description
+1	socket()	Create socket
+2	bind()	Attach IP & port
+3	listen()	Wait for clients
+4	accept()	Accept connection
+5	send()/recv()	Exchange data
+6	closesocket()	Close connection
+
+Socket type used: SOCK_STREAM (TCP).
+Structure used: sockaddr_in for IP and port setup.
+
+4. Client–Server Architecture
+Server Responsibilities
+
+Accept multiple clients
+
+Broadcast messages to all users
+
+Manage usernames and disconnections
+
+Handle admin commands via chatbot
+
+Client Responsibilities
+
+Connect using server IP and port
+
+Send and receive messages
+
+Display chat in console
+
+Support slash commands (/time, /users, /exit)
+
+5. Concurrency and Threading
+
+Each client runs on a separate thread, allowing multiple users to chat simultaneously.
+Threads are created as:
+
+std::thread(handleClient, clientSocket).detach();
+
+Synchronization
+
+Since multiple threads share vectors (clients, usernames), mutex locks ensure thread safety:
+
+std::mutex mtx;
+std::lock_guard<std::mutex> lock(mtx);
+
+6. Message & Connection Protocol
+Steps
+
+Client connects to server.
+
+Sends username; server checks uniqueness (OK / TAKEN).
+
+Server adds user and broadcasts join message.
+
+Chat begins — messages broadcasted as username: message.
+
+/exit disconnects client; server updates user list.
+
+Special Commands
+
+/announce – Admin broadcast
+
+/remove <user> – Kick user
+
+/users – Show connected users
+
+/time – Display Time in 24 hours format
+
+8. Security and Performance
+
+TCP ensures data integrity.
+
+Basic username system prevents impersonation.
+
+Fixed-size buffers manage memory efficiently.
+
+Detached threads auto-clean on disconnection
+
+9. Technical Summary
+Feature	Specification
+Language	C++11
+OS	Windows 10/11
+Libraries	ws2_32.lib, <thread>, <mutex>, <vector>
+Network	TCP/IP over LAN
+Port	12345
+Architecture	Multi-threaded client-server

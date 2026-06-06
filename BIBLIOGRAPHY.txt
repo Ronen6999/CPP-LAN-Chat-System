@@ -1,0 +1,13 @@
+BIBLIOGRAPHY
+
+1. Stevens, W. Richard. "TCP/IP Illustrated, Volume 1: The Protocols." Addison-Wesley Professional, 2011.
+   - Comprehensive guide to TCP/IP protocols and socket programming fundamentals.
+
+2. Beej's Guide to Network Programming. "Beej's Guide to Network Programming Using Internet Sockets." Available at: http://beej.us/guide/bgnet/
+   - Practical tutorial for socket programming in C/C++ with real examples.
+
+3. Stroustrup, Bjarne. "The C++ Programming Language." Addison-Wesley Professional, 2013.
+   - Authoritative reference for C++ language features including threading and standard library.
+
+4. MSDN Documentation. "Windows Sockets 2 (Winsock)." Microsoft Developer Network. Available at: https://docs.microsoft.com/en-us/windows/win32/winsock/
+   - Official documentation for WinSock2 API used in Windows socket programming.

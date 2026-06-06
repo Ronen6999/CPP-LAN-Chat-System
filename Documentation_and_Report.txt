@@ -1,0 +1,164 @@
+HS 2nd Year Computer Science Project
+Project Title : LAN Chat System in C++ using TCP/IP Sockets
+Description   : Simple LAN-based chat between computers using client-server model.
+
+Team Members  :
+ - Ronen Singha (Team Lead & Main Developer)
+ - Sanju (Co-Developer)
+ - Nabonita (Research & Theory)
+ - Pretty (Testing & Debugging)
+ - Sumedha (Documentation & Report Writing)
+ - Mehek (Feature Implementation & Enhancement)
+
+Academic Year : 2025
+Institution   : Gurucharan University
+
+Documentation & Report –
+
+ LAN Chat System
+1. Project Summary
+The LAN Chat System is a multi-user communication program developed in C++ using the TCP/IP protocol.
+It allows multiple users within a local area network to chat in real time through a client-server architecture.
+
+Key Features:
+
+Real-time messaging between users
+
+Unique username identification
+
+Multi-threaded client handling
+
+Admin console with commands (/announce, /remove)
+
+Integrated chatbot for quick utilities (/help, /time, /ping)
+
+Automatic user join/leave notifications
+
+2. System Architecture
+
+Server:
+Accepts client connections
+
+Broadcasts messages to all users
+
+Handles admin input and bot commands
+
+Uses mutex locks for thread safety
+
+Client:
+Connects to server via IP and port
+
+Sends and receives chat messages
+
+Displays messages in console
+
+Handles slash commands and exit
+
+3. Technical Implementation
+Language: C++ (C++11)
+Platform: Windows (WinSock2 API)
+Library: ws2_32.lib
+Network Protocol: TCP/IP
+Port: 12345
+
+Important Structures:
+
+std::vector<SOCKET> clients;
+std::vector<std::string> usernames;
+std::mutex mtx;
+
+Thread Model:
+
+One thread per client (std::thread(handleClient, socket).detach();)
+
+Mutex ensures safe access to shared data
+
+Client Functions:
+
+main() – Connect to server, send username
+
+receiveMessages() – Listen to incoming messages
+
+Server Functions:
+
+main() – Initialize, show LAN IPs, accept clients
+
+handleClient() – Manage per-client communication
+
+broadcastMessage() – Send messages to all clients
+
+4. Setup & Usage Compilation:
+
+g++ -o server.exe server.cpp -lws2_32
+
+g++ -o client.exe client.cpp -lws2_32
+
+Steps to Run:
+
+Start server → prints LAN IPs
+
+Start client → enter server IP & username
+
+Chat in real time
+
+Type /exit to leave
+
+Bot Commands:
+
+/help – show commands
+/ping – check connection
+/time – show server time
+/allusers – show user list
+/announce <msg> – admin broadcast
+/remove <user> – admin remove user
+
+5. Testing & Results
+Tests Performed:
+
+Multiple clients connected successfully
+
+Message broadcast verified
+
+Username uniqueness enforced
+
+Bot & admin commands functional
+
+Disconnection handled cleanly
+
+Performance:
+
+Latency <100ms (LAN)
+
+Up to 10 concurrent users
+
+Stable operation under repeated joins/leaves
+
+6. Problems & Solutions:
+
+Problem: Race conditions
+Solution: used std::mutex for synchronization
+
+Problem: Username conflicts
+Solution:	Implemented OK/TAKEN negotiation
+
+Problem: Server IP discovery
+Solution: Server prints all LAN IPv4s
+
+7. Conclusion
+This project successfully demonstrates a real-time LAN chat system using C++ and TCP/IP sockets.
+It features reliable message delivery, concurrency, and admin control.
+The addition of a modular chatbot (suggested by Mehek) improved usability and extended functionality.
+
+Skills Learned:
+Socket programming with WinSock2
+
+Threading and synchronization
+
+Client-server architecture
+
+Network error handling
+
+Modular system design
+
+Summary:
+A lightweight, efficient, and educational LAN-based chat system built with modern C++ principles, demonstrating teamwork, technical design, and practical application of computer networking.
