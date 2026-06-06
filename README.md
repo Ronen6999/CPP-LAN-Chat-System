@@ -109,13 +109,13 @@ g++ -o client.exe src/Main/client.cpp src/Bot/ChatBot.cpp -lws2_32
 ### Running Application Demo
 
 **Demo 1:**
-![Demo Screenshot 1](https://res.cloudinary.com/dymxdpunk/image/upload/v1780767056/output3_cvxgd0.jpg)
+![Demo Screenshot 1](https://res.cloudinary.com/dymxdpunk/image/upload/v1780767056/output_1_goiunl.jpg)
 
 **Demo 2:**
 ![Demo Screenshot 2](https://res.cloudinary.com/dymxdpunk/image/upload/v1780767056/output_2_leitou.jpg)
 
 **Demo 3:**
-![Demo Screenshot 3](https://res.cloudinary.com/dymxdpunk/image/upload/v1780767056/output_1_goiunl.jpg)
+![Demo Screenshot 3](https://res.cloudinary.com/dymxdpunk/image/upload/v1780767056/output3_cvxgd0.jpg)
 
 ## Project Architecture
 
